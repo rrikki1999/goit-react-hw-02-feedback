@@ -1,0 +1,10 @@
+.feedback-options {
+  display: flex;
+  gap: 30px;
+}
+.feedback-options button {
+  font-size: 50px;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #afeeee;
+}
