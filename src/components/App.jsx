@@ -31,21 +31,28 @@ class App extends Component {
 
   render() {
     const feedbackOptions = ['good', 'neutral', 'bad'];
+    const totalFeedback = this.countTotalFeedback();
 
     return (
       <div className={styles.app}>
-        <h1>Please leave feedback</h1>
+        <h1>Please leave Feedback</h1>
+        
         <FeedbackOptions options={feedbackOptions} onLeaveFeedback={this.handleLeaveFeedback} />
-        <h2>Statistics</h2>
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositivePercentage()}
-        />
 
-        {this.countTotalFeedback() === 0 && (
+        {totalFeedback > 0 && (
+          <>
+            <h2>Statistics</h2>
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={totalFeedback}
+              positivePercentage={this.countPositivePercentage()}
+            />
+          </>
+        )}
+
+        {totalFeedback === 0 && (
           <Notification message="There is no feedback" />
         )}
       </div>
